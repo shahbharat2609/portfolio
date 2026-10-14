@@ -1,0 +1,480 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.375rem;
+  --background: #f1ede6;
+  --foreground: #1c2126;
+  --card: #ffffff;
+  --card-foreground: #1c2126;
+  --popover: #ffffff;
+  --popover-foreground: #1c2126;
+  --primary: #1c2126;
+  --primary-foreground: #f1ede6;
+  --secondary: #e7e1d6;
+  --secondary-foreground: #1c2126;
+  --muted: #e7e1d6;
+  --muted-foreground: #585f68;
+  --accent: #e7e1d6;
+  --accent-foreground: #1c2126;
+  --destructive: #c8342b;
+  --border: #d8d2c8;
+  --input: #d8d2c8;
+  --ring: #1a7980;
+
+  --teal: #1a7980;
+  --ochre: #a85e22;
+  --sky: #3c6cb4;
+  --m1: #9da9bf;
+  --snow: #f4f6f8;
+  --m2: #c08a52;
+  --m3: #8a5636;
+  --lake: #2fa7ae;
+  --rock: #6e4a33;
+  --plain: #d9c39b;
+  --road: #3a3f45;
+  --road-edge: #c9b79a;
+  --leo: #dcd6ca;
+  --leo-spot: #7a7266;
+  --eye: #3a3a2e;
+  --band: #1c2126;
+  --band-foreground: #f1ede6;
+  --band-muted: #a9afb8;
+  --band-line: #353c45;
+}
+
+.dark {
+  --background: #0d1120;
+  --foreground: #e6e8ee;
+  --card: #141a2c;
+  --card-foreground: #e6e8ee;
+  --popover: #141a2c;
+  --popover-foreground: #e6e8ee;
+  --primary: #e6e8ee;
+  --primary-foreground: #0d1120;
+  --secondary: #1c2338;
+  --secondary-foreground: #e6e8ee;
+  --muted: #1c2338;
+  --muted-foreground: #9aa1b2;
+  --accent: #1c2338;
+  --accent-foreground: #e6e8ee;
+  --border: #252c42;
+  --input: #252c42;
+  --ring: #5cc8c9;
+
+  --teal: #5cc8c9;
+  --ochre: #e0a15e;
+  --sky: #0a0f24;
+  --m1: #232a44;
+  --snow: #56607e;
+  --m2: #1a1f35;
+  --m3: #12162a;
+  --lake: #1b4658;
+  --rock: #0e1120;
+  --plain: #1b2034;
+  --road: #161a26;
+  --road-edge: #2a3048;
+  --leo: #070a16;
+  --leo-spot: #070a16;
+  --eye: #8ef0d8;
+  --band: #070a16;
+  --band-foreground: #e6e8ee;
+  --band-muted: #9aa1b2;
+  --band-line: #252c42;
+}
+
+@theme inline {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-teal: var(--teal);
+  --color-ochre: var(--ochre);
+  --color-sky: var(--sky);
+  --color-band: var(--band);
+  --color-band-foreground: var(--band-foreground);
+  --color-band-muted: var(--band-muted);
+  --color-band-line: var(--band-line);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-padding-top: 24px;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 1.1s ease,
+    color 1.1s ease,
+    border-color 1.1s ease,
+    fill 1.1s ease,
+    stroke 1.1s ease !important;
+}
+
+.sun,
+.moon {
+  transition:
+    transform 1.8s cubic-bezier(0.6, 0, 0.3, 1),
+    opacity 1.4s ease;
+}
+.moon {
+  transform: translateY(320px);
+  opacity: 0;
+}
+.dark .sun {
+  transform: translateY(320px);
+  opacity: 0;
+}
+.dark .moon {
+  transform: none;
+  opacity: 1;
+}
+.day-only {
+  transition: opacity 1.2s ease;
+}
+.dark .day-only {
+  opacity: 0;
+}
+.star,
+.milky,
+.flake {
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+.dark .star {
+  opacity: 1;
+  animation: twinkle 3s ease-in-out infinite;
+}
+.dark .star.b {
+  animation-delay: -1s;
+}
+.dark .star.c {
+  animation-delay: -2s;
+}
+.dark .milky {
+  opacity: 0.55;
+}
+.dark .flake {
+  opacity: 0.8;
+  animation: snowfall 14s linear infinite;
+}
+.dark .flake.b {
+  animation-duration: 18s;
+  animation-delay: -6s;
+}
+.dark .flake.c {
+  animation-duration: 22s;
+  animation-delay: -11s;
+}
+.beam {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.dark .beam {
+  opacity: 1;
+}
+.dark .eye-glow {
+  filter: drop-shadow(0 0 4px #8ef0d8);
+}
+
+.geese {
+  animation: fly 48s linear infinite;
+}
+.wing {
+  animation: flap 0.9s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.flag {
+  animation: flutter 1.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 0 0;
+}
+.flag.b {
+  animation-delay: -0.6s;
+}
+.flag.c {
+  animation-delay: -1.2s;
+}
+.blink {
+  animation: blink 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.leo-tail {
+  animation: tail 5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 0 60%;
+}
+.leo-breathe {
+  animation: breathe 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.graze {
+  animation: graze 5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 30% 100%;
+}
+
+.ride {
+  animation: ride 17s linear infinite;
+}
+.ride.b {
+  animation-delay: -8.5s;
+}
+.bounce {
+  animation: bike-bounce 0.32s ease-in-out infinite;
+}
+.wheel {
+  animation: wheel 0.45s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.puff {
+  animation: puff 1.1s ease-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.puff.b {
+  animation-delay: -0.55s;
+}
+.project-card .mini-bike {
+  left: -140px;
+  transition: none;
+}
+.project-card:hover .mini-bike,
+.project-card:focus-visible .mini-bike {
+  left: calc(100% + 20px);
+  transition: left 2s cubic-bezier(0.45, 0, 0.25, 1);
+}
+
+.cub-float {
+  animation: cub-float 4.2s ease-in-out infinite;
+}
+.cub-shadow {
+  animation: cub-shadow 4.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.cub-ear {
+  animation: ear 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 80% 100%;
+}
+.cub-ear.r {
+  animation-delay: -3s;
+  transform-origin: 20% 100%;
+}
+.cub-tail {
+  animation: cub-tail 3s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 0 100%;
+}
+
+.stop-card {
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
+}
+.stop-card .stop-bar {
+  width: 0;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stop-card.is-reached {
+  transform: translateY(-6px);
+  border-color: var(--ochre);
+}
+.stop-card.is-reached .stop-bar {
+  width: 100%;
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes snowfall {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(560px);
+  }
+}
+@keyframes fly {
+  from {
+    transform: translateX(-10vw);
+  }
+  to {
+    transform: translateX(110vw);
+  }
+}
+@keyframes flap {
+  50% {
+    transform: scaleY(0.4);
+  }
+}
+@keyframes flutter {
+  0%,
+  100% {
+    transform: skewY(0) scaleX(1);
+  }
+  30% {
+    transform: skewY(6deg) scaleX(0.92);
+  }
+  60% {
+    transform: skewY(-4deg) scaleX(0.97);
+  }
+}
+@keyframes blink {
+  0%,
+  94%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes tail {
+  50% {
+    transform: rotate(-4deg);
+  }
+}
+@keyframes breathe {
+  50% {
+    transform: scaleY(1.015);
+  }
+}
+@keyframes graze {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(1px) rotate(1.5deg);
+  }
+}
+@keyframes ride {
+  from {
+    left: -170px;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes bike-bounce {
+  50% {
+    transform: translateY(-1.6px);
+  }
+}
+@keyframes wheel {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes puff {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(-30px, -10px) scale(1.7);
+    opacity: 0;
+  }
+}
+@keyframes cub-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(3deg);
+  }
+}
+@keyframes cub-shadow {
+  50% {
+    transform: scaleX(0.8);
+    opacity: 0.6;
+  }
+}
+@keyframes ear {
+  0%,
+  88%,
+  100% {
+    transform: rotate(0);
+  }
+  92% {
+    transform: rotate(-10deg);
+  }
+  96% {
+    transform: rotate(4deg);
+  }
+}
+@keyframes cub-tail {
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+  .ride {
+    left: 20%;
+  }
+  .ride.b {
+    left: 60%;
+  }
+}

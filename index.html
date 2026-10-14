@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#3C6CB4" />
+    <meta
+      name="description"
+      content="Bharat Shah, full-stack engineer building web apps, APIs and mobile apps end to end."
+    />
+    <meta property="og:title" content="Bharat Shah · Full-stack engineer" />
+    <meta
+      property="og:description"
+      content="Web apps, APIs and mobile apps, designed and shipped end to end."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    />
+    <title>Bharat Shah · Full-stack engineer</title>
+    <script>
+      try {
+        const saved = localStorage.getItem("bs:theme");
+        const night = saved ? saved === "night" : matchMedia("(prefers-color-scheme: dark)").matches;
+        if (night) document.documentElement.classList.add("dark");
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
